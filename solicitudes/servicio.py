@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from .repositorio import RepositorioJSON
-from .validacion import validar_nueva
+from .validacion import NoEncontrada, validar_nueva
 
 
 def _ahora():
@@ -26,4 +26,10 @@ class ServicioSolicitudes:
             "historial": [{"fecha": _ahora(), "cambio": "Solicitud registrada"}],
         }
         self.repo.guardar(solicitud)
+        return solicitud
+
+    def consultar(self, codigo):
+        solicitud = self.repo.obtener((codigo or "").strip().upper())
+        if solicitud is None:
+            raise NoEncontrada(f"No existe una solicitud con el código '{codigo}'.")
         return solicitud

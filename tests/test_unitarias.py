@@ -1,7 +1,7 @@
 import unittest
 
 from solicitudes.servicio import ServicioSolicitudes
-from solicitudes.validacion import ErrorValidacion
+from solicitudes.validacion import ErrorValidacion, NoEncontrada
 
 DATOS = ("Ana", "Software", "No abre el correo", "Alta")
 
@@ -21,6 +21,16 @@ class TestUnitarias(unittest.TestCase):
             ServicioSolicitudes().registrar("", "Software", "  ", "Alta")
         self.assertEqual(len(ctx.exception.errores), 2)
         self.assertIn("solicitante es obligatorio", str(ctx.exception))
+
+    def test_consulta_codigo_inexistente(self):
+        with self.assertRaises(NoEncontrada) as ctx:
+            ServicioSolicitudes().consultar("SOL-9999")
+        self.assertIn("No existe una solicitud", str(ctx.exception))
+
+    def test_consulta_por_codigo(self):
+        s = ServicioSolicitudes()
+        codigo = s.registrar(*DATOS)["codigo"]
+        self.assertEqual(s.consultar(codigo)["solicitante"], "Ana")
 
 
 if __name__ == "__main__":
