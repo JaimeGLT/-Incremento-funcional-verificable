@@ -32,6 +32,20 @@ class TestUnitarias(unittest.TestCase):
         codigo = s.registrar(*DATOS)["codigo"]
         self.assertEqual(s.consultar(codigo)["solicitante"], "Ana")
 
+    def test_asignar_tecnico_y_estado_con_historial(self):
+        s = ServicioSolicitudes()
+        codigo = s.registrar(*DATOS)["codigo"]
+        s.asignar_tecnico(codigo, "Luis")
+        sol = s.actualizar_estado(codigo, "Resuelta")
+        self.assertEqual((sol["tecnico"], sol["estado"]), ("Luis", "Resuelta"))
+        self.assertEqual(len(sol["historial"]), 4)
+
+    def test_estado_invalido(self):
+        s = ServicioSolicitudes()
+        codigo = s.registrar(*DATOS)["codigo"]
+        with self.assertRaises(ErrorValidacion):
+            s.actualizar_estado(codigo, "Volando")
+
 
 if __name__ == "__main__":
     unittest.main()
