@@ -1,0 +1,21 @@
+*   5a987a4 2026-10-05 Jaime Integrar feature/docs (revisado por otro integrante)
+|\  
+| * 57b62c0 2026-10-05 Jaime Documentación: README, matriz de trazabilidad, casos de prueba y checklist de revisión
+|/  
+*   ff65533 2026-10-05 Jaime Integrar feature/cli (revisado por otro integrante)
+|\  
+| * 14b7563 2026-10-05 Jaime Interfaz de línea de comandos y pruebas de integración y aceptación
+|/  
+*   b178ba8 2026-10-05 Jaime Integrar feature/gestion (revisado por otro integrante)
+|\  
+| * 9f124ba 2026-10-05 Jaime Asignar técnico, actualizar estado y guardar historial de cambios
+|/  
+*   1370aea 2026-10-05 Jaime Integrar feature/consulta (revisado por otro integrante)
+|\  
+| * 010cfe3 2026-10-05 Jaime Consultar solicitud por código con mensaje claro si no existe
+|/  
+*   8ca607b 2026-10-05 Jaime Integrar feature/registro (revisado por otro integrante)
+|\  
+| * 529aac8 2026-10-05 Jaime Registrar solicitud con validación de campos y código único SOL-NNNN
+|/  
+* 9e2f381 2026-10-05 Jaime Estructura inicial del proyecto: paquetes, .gitignore y README base
